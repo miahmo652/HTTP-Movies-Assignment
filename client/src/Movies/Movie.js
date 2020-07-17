@@ -29,7 +29,11 @@ function Movie(addToSavedList) {
 const deleteItem = e =>{
   e.preventDefault()
   axios.delete(`http://localhost:5000/api/movies/${movie.id}`)
-  .then(()=>history.push('/'))
+  .then(()=>{
+    props.getMovieList();
+    history.push('/')
+  })
+  
   
   .catch(err =>console.log(err))
 }
