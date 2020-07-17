@@ -36,11 +36,11 @@ export default function UpdateForm(props) {
     }, [id])
 
     const handleSubmit = e =>{
-        e.preventDefault();
         movie.stars=movie.stars.split(',')
         axios
         .put(`http://localhost:5000/api/movies/${id}`, movie)
         .then(res => {
+            props.getMovieList();
             console.log(res)
             setMovie({
                 id: "",
